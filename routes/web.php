@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\OrganizationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.layout');
 });
+
+
+Route::resource('employees', EmployeeController::class);
+Route::resource('organizations', OrganizationController::class);
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
